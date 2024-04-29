@@ -16,8 +16,37 @@ const quizes = [
     },
 ]
 
-window.addEventListener("contentLoaded",function(){
-    
+function renderQuizes(quizes){
+    document.querySelector(".quiz-container").innerHTML=quizes.map(function(quiz){
+        const prob=`
+        <div class="quiz-item">
+            <h3>Câu ${quiz.id} : ${quiz.question} = ?</h3>
+            <div class="quiz-answer">
+                <div class="quiz-answer-item">
+                    <input type="radio" name="${quiz.id}">
+                    <label>${quiz.answers[0]}</label>
+                </div>
+                <div class="quiz-answer-item">
+                    <input type="radio" name="${quiz.id}">
+                    <label>${quiz.answers[1]}</label>
+                </div>
+                <div class="quiz-answer-item">
+                    <input type="radio" name="${quiz.id}">
+                    <label>${quiz.answers[2]}</label>
+                </div>
+                <div class="quiz-answer-item">
+                    <input type="radio" name="${quiz.id}">
+                    <label>${quiz.answers[3]}</label>
+                </div>
+            </div>
+        </div>
+        `
+        return prob
+    }).join("")
+}
+
+window.addEventListener("DOMContentLoaded",function(e){
+    renderQuizes(quizes)
 })
 
 function randomAnswer(){
